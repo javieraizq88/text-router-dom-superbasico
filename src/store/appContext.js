@@ -7,7 +7,6 @@ const injectContext = PassedComponent => {
     class StoreWrapper extends Component {
         constructor(props){
             super(props);
-
             this.state = getState({
                 getStore: () => this.state.store,
                 getActions: () => this.state.actions,
@@ -18,8 +17,9 @@ const injectContext = PassedComponent => {
             })
         }
 
+        
         componentDidMount(){
-            this.state.actions.getFilms('https://swapi.co/api/films');
+
         }
 
         render(){

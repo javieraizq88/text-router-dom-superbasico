@@ -1,27 +1,22 @@
 import React, { useContext } from 'react';
 import { Context } from '../store/appContext';
 
+
 const Home = props => {
-    const { store, actions } = useContext(Context);
-    const { name } = store;
+    const { actions } = useContext(Context);
+
     return (
         <>
-            <div className="container">
-                <div className="row">
-                    <div className="col">
-                        {
-                            store.films.results != null ?
-                                (
-                                    <h1>Informacion Cargada</h1>
-                                ) : (
-                                    <div class="spinner-grow" role="status">
-                                        <span class="sr-only">Loading...</span>
-                                    </div>
-                                )
-                        }
-                    </div>
-                </div>
-            </div>
+            <h1>Home</h1>
+            <h3>
+                Bienvenido&nbsp;
+        {
+                    !!props.match.params.name ?
+                        actions.getSaludo(props.match.params.name)
+                        :
+                        actions.getSaludo()
+                }
+            </h3>
         </>
     )
 }
